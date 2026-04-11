@@ -87,3 +87,5 @@ extranio 1 = [1]
 extranio n
     | n `mod` 2 == 0 = n : extranio (n `div` 2)
     | otherwise      = n : extranio (3*n + 1)
+
+
