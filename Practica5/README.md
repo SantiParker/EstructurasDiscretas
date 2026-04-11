@@ -46,3 +46,5 @@ En resumen, `foldl` es un ejemplo de recursión de cola, mientras que `foldr` no
 Comentarios
 
 Se implementaron todas las funciones utilizando recursión pura y patrones sobre listas. Además, se separaron las funciones auxiliares en un módulo independiente para cumplir con los lineamientos de la práctica.
+
+
