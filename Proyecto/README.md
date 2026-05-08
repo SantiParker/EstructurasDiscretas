@@ -174,3 +174,115 @@ En hexadecimal, cada espacio se representa como:
 
 20
 
+# 5. Compresión de frases usando Huffman
+
+Para probar el algoritmo de Huffman se utilizaron dos frases de la canción Beat It de Michael Jackson.
+
+Primera frase comprimida con Huffman
+Frase utilizada
+Showthemhowfunkyandstrongisyourfight
+Representación binaria original (ASCII)
+
+Cada carácter ocupa 8 bits.
+
+Fragmento inicial:
+
+01010011 01101000 01101111 01110111
+
+Representación completa:
+
+01010011 01101000 01101111 01110111 01110100 01101000 01100101 01101101 01101000 01101111 01110111 01100110 01110101 01101110 01101011 01111001 01100001 01101110 01100100 01110011 01110100 01110010 01101111 01101110 01100111 01101001 01110011 01111001 01101111 01110101 01110010 01100110 01101001 01100111 01101000 01110100
+
+Tamaño original:
+
+288 bits
+Tabla de códigos Huffman
+Símbolo	Frecuencia	Código Huffman
+h	4	001
+o	4	011
+f	2	0000
+g	2	0001
+i	2	0100
+n	3	1101
+r	2	1000
+s	2	1001
+t	3	1110
+u	2	1010
+w	2	1011
+y	2	1100
+k	1	01010
+m	1	01011
+S	1	111100
+a	1	111101
+d	1	111110
+e	1	111111
+Representación comprimida
+1111000010111011111001011111110101100101101101110100001010110011011110111111011001110101000010111011010000100111001110011011010111000100000111111100011110001110
+Resultados
+Tipo de representación	Bits utilizados
+ASCII	288 bits
+Huffman	146 bits
+Eficiencia obtenida
+
+La compresión redujo el tamaño del mensaje aproximadamente un:
+
+50.69 %
+
+Esto demuestra que Huffman logra disminuir considerablemente la cantidad de bits necesarios al asignar códigos más pequeños a los caracteres más frecuentes.
+
+
+
+
+Segunda frase comprimida con Huffman
+Frase utilizada
+Itdoesntmatterwhoswrongorright
+
+Frase original:
+
+It doesn't matter who's wrong or right
+Representación binaria original (ASCII)
+
+Cada carácter ocupa 8 bits.
+
+Fragmento inicial:
+
+01001001 01110100 01100100 01101111
+
+Representación completa:
+01001001 01110100 01100100 01101111 01100101 01110011 01101110 01110100 01101101 01100001 01110100 01110100 01100101 01110010 01110111 01101000 01101111 01110011 01110111 01110010 01101111 01101110 01100111 01101111 01110010 01110010 01101001 01100111 01101000 01110100
+
+Tamaño total:
+
+30 caracteres × 8 bits = 240 bits
+Tabla de códigos Huffman
+Símbolo	Frecuencia	Código Huffman
+o	4	101
+r	4	110
+t	5	111
+w	2	000
+e	2	0101
+g	2	0110
+h	2	0111
+m	1	0010
+n	2	1000
+s	2	1001
+I	1	00110
+a	1	00111
+d	1	01000
+i	1	01001
+Representación comprimida
+001101110100010101001100011100100010011111101110000111101100100001100101110110010010110011111
+Resultados
+Tipo de representación	Bits utilizados
+ASCII	240 bits
+Huffman	109 bits
+Eficiencia obtenida
+
+La compresión redujo el tamaño del mensaje aproximadamente un:
+
+45.42 %
+
+Esto demuestra nuevamente cómo la codificación Huffman aprovecha la frecuencia de aparición de los caracteres para disminuir la cantidad total de bits utilizados.
+
+
+
