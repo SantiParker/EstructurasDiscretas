@@ -285,4 +285,118 @@ La compresión redujo el tamaño del mensaje aproximadamente un:
 Esto demuestra nuevamente cómo la codificación Huffman aprovecha la frecuencia de aparición de los caracteres para disminuir la cantidad total de bits utilizados.
 
 
+# 6. Árboles de Huffman para “Azarath Metrion Zinthos”
+
+Frase utilizada:
+
+```text id="jlwmc"
+AzarathMetrionZinthos
+```
+
+(Se eliminaron espacios para simplificar el análisis).
+
+---
+
+# Frecuencias de los símbolos
+
+| Símbolo | Frecuencia |
+| ------- | ---------- |
+| A       | 1          |
+| Z       | 1          |
+| a       | 2          |
+| r       | 2          |
+| t       | 3          |
+| h       | 2          |
+| M       | 1          |
+| e       | 1          |
+| i       | 2          |
+| o       | 2          |
+| n       | 2          |
+| s       | 1          |
+
+Frecuencia total:
+
+```text id="jlwmd"
+20 símbolos
+```
+
+---
+
+# Primer árbol de Huffman
+
+## Códigos generados
+
+| Símbolo | Código | Longitud |
+| ------- | ------ | -------- |
+| t       | 00     | 2        |
+| a       | 010    | 3        |
+| r       | 011    | 3        |
+| h       | 100    | 3        |
+| i       | 1010   | 4        |
+| o       | 1011   | 4        |
+| n       | 1100   | 4        |
+| A       | 11010  | 5        |
+| Z       | 11011  | 5        |
+| M       | 11100  | 5        |
+| e       | 11101  | 5        |
+| s       | 11110  | 5        |
+
+---
+
+# Tamaño promedio del código
+
+Usando:
+
+\bar{L}=\frac{\sum f_i l_i}{\sum f_i}
+
+Sustituyendo:
+
+\bar{L}=\frac{(3\cdot2)+(2\cdot3)+(2\cdot3)+(2\cdot3)+(2\cdot4)+(2\cdot4)+(2\cdot4)+(1\cdot5)+(1\cdot5)+(1\cdot5)+(1\cdot5)+(1\cdot5)}{20}
+
+Resultado:
+
+\bar{L}=3.65\text{ bits/símbolo}
+
+---
+
+# Segundo árbol de Huffman
+
+Debido a que varios símbolos tienen la misma frecuencia, es posible construir otro árbol válido.
+
+## Códigos generados
+
+| Símbolo | Código | Longitud |
+| ------- | ------ | -------- |
+| t       | 11     | 2        |
+| a       | 100    | 3        |
+| r       | 101    | 3        |
+| h       | 000    | 3        |
+| i       | 0010   | 4        |
+| o       | 0011   | 4        |
+| n       | 0100   | 4        |
+| A       | 01010  | 5        |
+| Z       | 01011  | 5        |
+| M       | 01100  | 5        |
+| e       | 01101  | 5        |
+| s       | 01110  | 5        |
+
+---
+
+# Tamaño promedio del segundo árbol
+
+\bar{L}=\frac{73}{20}
+
+Resultado:
+
+\bar{L}=3.65\text{ bits/símbolo}
+
+---
+
+# Conclusión
+
+Aunque los árboles tienen estructuras diferentes y códigos distintos, ambos producen el mismo tamaño promedio del código debido a que las frecuencias de los símbolos son iguales.
+
+Esto ocurre porque Huffman garantiza una codificación óptima respecto al promedio de bits utilizados.
+
+
 
