@@ -398,5 +398,59 @@ Aunque los árboles tienen estructuras diferentes y códigos distintos, ambos pr
 
 Esto ocurre porque Huffman garantiza una codificación óptima respecto al promedio de bits utilizados.
 
+# 7. ¿Cómo se garantiza que este algoritmo no genere un árbol desbalanceado?
+
+El algoritmo de Huffman construye el árbol de manera gradual combinando siempre los dos nodos con menor frecuencia. Esto provoca que los símbolos menos frecuentes queden en niveles más profundos del árbol y que los símbolos más frecuentes permanezcan cerca de la raíz.
+
+Gracias a esta estrategia:
+
+los caracteres más utilizados reciben códigos más cortos,
+los caracteres menos frecuentes reciben códigos más largos.
+
+Aunque el árbol puede no ser perfectamente simétrico, Huffman garantiza que el promedio total de bits utilizados sea mínimo. Por ello, el algoritmo evita generar árboles excesivamente desbalanceados que aumenten innecesariamente el tamaño promedio del código.
+
+Además, como en cada paso se combinan únicamente los nodos de menor peso, el crecimiento del árbol ocurre de forma controlada y eficiente.
+
+# 8. ¿Puede cambiar la altura de un árbol de acuerdo a su codificación?
+
+Sí. La altura de un árbol de Huffman puede cambiar dependiendo de la distribución de frecuencias de los símbolos y del orden en que se combinen los nodos durante la construcción del árbol.
+
+Cuando algunos caracteres aparecen con mucha mayor frecuencia que otros:
+
+los símbolos frecuentes quedan cerca de la raíz,
+los símbolos poco frecuentes quedan más profundos.
+
+Esto puede provocar árboles más altos o más bajos dependiendo de la entrada.
+
+Además, si varios símbolos tienen la misma frecuencia, existen diferentes formas válidas de combinar los nodos. Como consecuencia, pueden generarse distintos árboles de Huffman para una misma cadena de texto, cada uno con alturas diferentes.
+
+Sin embargo, aunque la altura cambie, el algoritmo sigue garantizando una codificación eficiente y un tamaño promedio mínimo para los datos comprimidos.
+
+# 9. ¿Por qué es necesario tener un respectivo árbol de Huffman para decodificar una cadena de texto? ¿Qué pasa si no lo tengo?
+
+El árbol de Huffman es necesario porque la codificación utiliza códigos de longitud variable. Esto significa que cada símbolo puede ocupar una cantidad distinta de bits.
+
+Por ejemplo:
+
+una letra frecuente puede representarse con 2 bits,
+mientras que otra menos frecuente puede necesitar 5 bits.
+
+Durante la decodificación, el árbol permite recorrer correctamente la secuencia binaria:
+
+si el bit es 0, se avanza a la izquierda,
+si el bit es 1, se avanza a la derecha.
+
+Cuando se llega a una hoja, se obtiene el símbolo correspondiente.
+
+Sin el árbol de Huffman no sería posible saber:
+
+dónde termina un código,
+dónde comienza el siguiente símbolo,
+qué secuencia de bits corresponde a cada carácter.
+
+Como consecuencia, la cadena comprimida no podría interpretarse correctamente y el mensaje original no podría recuperarse. Por ello, el receptor debe tener exactamente el mismo árbol utilizado durante la compresión.
+
+
+
 
 
