@@ -51,3 +51,35 @@ insertar x [] = [x]
 insertar x (y:ys)
     | snd x > snd y = x:y:ys
     | otherwise = y : insertar x ys
+
+
+
+-- Convertir frecuencias a hojas
+hacerHojas :: [(Char,Int)] -> [Huffman]
+hacerHojas [] = []
+hacerHojas ((c,n):xs) =
+    Hoja c n : hacerHojas xs
+
+-- Insertar árbol ordenado por peso ascendente
+insertarArbol :: Huffman -> [Huffman] -> [Huffman]
+insertarArbol x [] = [x]
+insertarArbol x (y:ys)
+    | peso x <= peso y = x:y:ys
+    | otherwise = y : insertarArbol x ys
+
+ordenarArboles :: [Huffman] -> [Huffman]
+ordenarArboles [] = []
+ordenarArboles (x:xs) =
+    insertarArbol x (ordenarArboles xs)
+
+-- Construcción Huffman
+construir :: [Huffman] -> Huffman
+construir [x] = x
+construir (x:y:xs) =
+    construir (insertarArbol nuevo xs)
+    where nuevo = Nodo (peso x + peso y) x y
+
+-- Árbol de una cadena
+arbolHuffman :: String -> Huffman
+arbolHuffman xs =
+    construir (ordenarArboles (hacerHojas (frecuencias xs)))
