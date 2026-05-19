@@ -83,3 +83,32 @@ construir (x:y:xs) =
 arbolHuffman :: String -> Huffman
 arbolHuffman xs =
     construir (ordenarArboles (hacerHojas (frecuencias xs)))
+
+
+
+-- Buscar código de un caracter
+codigo :: Char -> Huffman -> String
+codigo c (Hoja x _)
+    | c == x = ""
+    | otherwise = error "No encontrado"
+
+codigo c (Nodo _ izq der)
+    | existe c izq = '0' : codigo c izq
+    | otherwise = '1' : codigo c der
+
+-- Verifica si existe
+existe :: Char -> Huffman -> Bool
+existe c (Hoja x _) = c == x
+existe c (Nodo _ izq der) =
+    existe c izq || existe c der
+
+-- Codificar texto
+codificar :: String -> Huffman -> String
+codificar [] _ = []
+codificar (x:xs) arbol =
+    codigo x arbol ++ codificar xs arbol
+
+-- Comprimir
+comprimir :: String -> String
+comprimir xs =
+    codificar xs (arbolHuffman xs)
