@@ -112,3 +112,24 @@ codificar (x:xs) arbol =
 comprimir :: String -> String
 comprimir xs =
     codificar xs (arbolHuffman xs)
+
+
+
+-- Tamaño ASCII
+bitsOriginal :: String -> Int
+bitsOriginal [] = 0
+bitsOriginal (_:xs) = 8 + bitsOriginal xs
+
+-- Tamaño comprimido
+bitsComprimido :: String -> Int
+bitsComprimido [] = 0
+bitsComprimido (_:xs) = 1 + bitsComprimido xs
+
+-- Diferencia porcentual
+porcentaje :: String -> Float
+porcentaje xs =
+    ((fromIntegral original - fromIntegral comprimido)
+    / fromIntegral original) * 100
+    where
+        original = bitsOriginal xs
+        comprimido = bitsComprimido (comprimir xs)
