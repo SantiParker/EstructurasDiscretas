@@ -133,3 +133,22 @@ porcentaje xs =
     where
         original = bitsOriginal xs
         comprimido = bitsComprimido (comprimir xs)
+
+
+
+-- Decodificar auxiliar
+decAux :: String -> Huffman -> Huffman -> String
+decAux [] _ (Hoja c _) = [c]
+decAux [] _ _ = []
+
+decAux bits raiz (Hoja c _) =
+    c : decAux bits raiz raiz
+
+decAux (b:bs) raiz (Nodo _ izq der)
+    | b == '0' = decAux bs raiz izq
+    | otherwise = decAux bs raiz der
+
+-- Decodificar
+decodificar :: String -> Huffman -> String
+decodificar bits arbol =
+    decAux bits arbol arbol
