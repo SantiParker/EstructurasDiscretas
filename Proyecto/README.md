@@ -451,6 +451,90 @@ qué secuencia de bits corresponde a cada carácter.
 Como consecuencia, la cadena comprimida no podría interpretarse correctamente y el mensaje original no podría recuperarse. Por ello, el receptor debe tener exactamente el mismo árbol utilizado durante la compresión.
 
 
+# 6. Ejemplos de codificación y decodificación
 
+## Ejemplo 1: Obtener frecuencias
+
+Entrada:
+
+```haskell
+frecuencias "abracadabra"
+```
+
+Salida:
+
+```haskell
+[('a',5),('r',2),('b',2),('d',1),('c',1)]
+```
+
+Este resultado muestra la frecuencia de aparición de cada símbolo ordenada de forma descendente.
+
+---
+
+## Ejemplo 2: Construcción del árbol de Huffman
+
+Entrada:
+
+```haskell
+arbolHuffman "abracadabra"
+```
+
+Salida:
+
+```haskell
+Nodo 11 (Hoja 'a' 5) (Nodo 6 (Hoja 'b' 2) (Nodo 4 (Nodo 2 (Hoja 'd' 1) (Hoja 'c' 1)) (Hoja 'r' 2)))
+```
+
+---
+
+## Ejemplo 3: Compresión
+
+Entrada:
+
+```haskell
+comprimir "abracadabra"
+```
+
+Salida:
+
+```haskell
+"0111010110..."
+```
+
+---
+
+## Ejemplo 4: Porcentaje de compresión
+
+Entrada:
+
+```haskell
+porcentaje "abracadabra"
+```
+
+Salida:
+
+```haskell
+73.86364
+```
+
+---
+
+## Ejemplo 5: Decodificación
+
+Entrada:
+
+```haskell
+let a = arbolHuffman "abracadabra"
+let c = codificar "abracadabra" a
+decodificar c a
+```
+
+Salida:
+
+```haskell
+"abracadabra"
+```
+
+Esto demuestra que la cadena comprimida puede reconstruirse correctamente utilizando el árbol correspondiente.
 
 
