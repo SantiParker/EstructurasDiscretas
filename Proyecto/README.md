@@ -156,4 +156,5 @@ La organización modular permite separar lógica principal y funciones auxiliare
 - Para decodificar correctamente es indispensable conservar el árbol generado durante la compresión.
 - Y se cometieron varios errores en el readme y el orden de los archivos subidos, culpa de mi PC jeje
 - Posdata, si fui a ver la de Michael Jackson jajaja espero que tu tambien  y si no te la recomiendo peliculon 20/10 y god
+-Esto es todo amigos
 ---
